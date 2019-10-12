@@ -1,5 +1,6 @@
 #include <hidboot.h>
 #include <usbhub.h>
+#include "Keyboard.h"
 
 // Satisfy IDE, which only needs to see the include statment in the ino.
 #ifdef dobogusinclude
@@ -99,6 +100,7 @@ void KbdRptParser::OnKeyPressed(uint8_t key)
 {
   Serial.print("ASCII: ");
   Serial.println((char)key);
+  Keyboard.write((char)key);
 };
 
 USB     Usb;
@@ -128,6 +130,8 @@ void setup()
 
   // initialize the LED pin as an output:
   pinMode(ledPin, OUTPUT);
+  // initialize control over the keyboard:
+  Keyboard.begin();
 }
 
 void loop()
