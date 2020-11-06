@@ -115,9 +115,13 @@ KbdRptParser KbdPrs;
 void setup()
 {
   Serial.begin( 115200 );
-#if !defined(__MIPSEL__)
-  while (!Serial); // Wait for serial port to connect - used on Leonardo, Teensy and other boards with built-in USB CDC serial connection
-#endif
+
+//  if you want to see output you WILL NEED TO OPEN SERIAL MONITOR, OTHERWISE IT WON'T RUN
+// wait for serial port to connect. Needed for Leonardo only
+//#if !defined(__MIPSEL__)
+//  while (!Serial); // Wait for serial port to connect - used on Leonardo, Teensy and other boards with built-in USB CDC serial connection
+//#endif
+
   Serial.println("Start");
 
   if (Usb.Init() == -1)
